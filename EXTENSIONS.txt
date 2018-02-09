@@ -1,0 +1,10 @@
+My solution could be extended to handle more scenarios in the following way:
+
+Domains beyond Amazon.com
+Parsing depends heavily in the way the website is structured, so to allow parsing from non-Amazon websites, I would request the user to provide the appropriate tags to look for when parsing the html.
+
+Products beyond just simply books.
+If the products are still from Amazon, it wouldn’t require much more work than what is already done, considering we are still mostly looking at the same website structures, perhaps the biggest change would be in what information we are trying to get (in the books’ case, ISBN-10, authors, etc.); as the code is specifically looking for this information, we would need to ask the user for keywords to look for when parsing.
+
+Parse and ship 2,000,000 books (in a reasonably time frame; e.g., polynomial time) instead of merely 20.
+The big problem with the way I chose to divide the books into boxes is that it requires multiple iterations on the book list to complete. A more efficient way I would consider is having a list of current boxes that are not yet full, and while iterating the book list, find a box that will fit the book (if no current box is available, create one). This will indeed still require multiple iterations of a list (albeit the box list, not the book list), but should be lighter on resources, considering we are going to have less boxes than we have books (although again, this entirely depends on the weight of the books; the heavier the books, the more we will have to iterate to find a box that will fit it).
